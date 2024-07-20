@@ -1,0 +1,31 @@
+import argparse
+import random
+from image_generator import ImageGenerator
+
+def main():
+    parser = argparse.ArgumentParser(description="Generate images with different styles.")
+    parser.add_argument('--style', type=str, required=True, help='The style of the generated image (e.g., roman, superhero, fantasy, linkedin, wizard)')
+    parser.add_argument('--seed', type=int, default=None, help='Random seed for image generation')
+    args = parser.parse_args()
+
+    model_url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth'
+    model_path = 'GFPGANv1.3.pth'
+    pipeline_name = "CompVis/stable-diffusion-v1-4"
+    prompts_path = 'prompts.json'
+    input_image_path = "input/6.jpg"
+    output_folder = "output"
+
+    image_generator = ImageGenerator(model_url, model_path, pipeline_name, prompts_path)
+    image_generator.download_model()
+    image_generator.load_pipeline()
+    image_generator.load_gfpgan()
+
+    for steps in [50, 100, 150, 200]:
+        for scale in [7, 7.5, 8]:
+            for strength in [0.75]:
+                for i in range(10):
+                    seed = random.randint(1, 10**5) if args.seed is None else args.seed + i
+                    image_generator.generate_image(input_image_path, output_folder, args.style, num_inference_steps=steps, guidance_scale=scale, strength=strength, seed=seed)
+
+if __name__ == "__main__":
+    main()

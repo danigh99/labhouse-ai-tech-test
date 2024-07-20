@@ -4,9 +4,10 @@ This repository contains an AI-based image generation program designed for a tec
 
 ## Features
 
-- **Style Transfer**: Generates images in specified styles (e.g., Roman, superhero).
+- **Style Transfer**: Generates images in specified styles (e.g., Roman, superhero, fantasy, LinkedIn, wizard).
 - **Face Enhancement**: Enhances the quality of faces in the generated images using GFPGAN.
 - **Configurable Parameters**: Allows customization of inference steps, guidance scale, and strength for image generation.
+- **Random Seed Generation**: Generates images with random seeds for variability.
 
 ## Requirements
 
@@ -19,8 +20,8 @@ This repository contains an AI-based image generation program designed for a tec
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/yourusername/ai-image-generation.git
-    cd ai-image-generation
+    git clone https://github.com/danigh99/labhouse-ai-tech-test.git
+    cd labhouse-ai-tech-test
     ```
 
 2. **Create a virtual environment:**
@@ -36,10 +37,6 @@ This repository contains an AI-based image generation program designed for a tec
     pip install -r requirements.txt
     ```
 
-4. **Download the GFPGAN model:**
-
-    The script will automatically download the GFPGAN model if it doesn't exist locally.
-
 ## Usage
 
 1. **Prepare your input image:**
@@ -49,25 +46,22 @@ This repository contains an AI-based image generation program designed for a tec
 2. **Run the program with the desired style:**
 
     ```sh
-    python generate_avatar.py --style roman
-    ```
-
-    or
-
-    ```sh
-    python generate_avatar.py --style superhero
+    python main.py --style roman
+    python main.py --style fantasy
+    python main.py --style linkedin
+    python main.py --style wizard
     ```
 
 3. **Generated images:**
 
-    The enhanced images will be saved in the `output` folder with names indicating the configuration used (steps, scale, strength).
+    The enhanced images will be saved in the `output` folder with names indicating the configuration used (steps, scale, strength, seed).
 
 ## Customization
 
-- **Add New Styles**: Update the `self.prompts` dictionary in the `ImageGenerator` class to add new styles with corresponding positive and negative prompts.
-- **Adjust Parameters**: Modify `num_inference_steps`, `guidance_scale`, and `strength` parameters to fine-tune the image generation process.
+- **Add New Styles**: Update the `prompts.json` file to add new styles with corresponding positive and negative prompts.
+- **Adjust Parameters**: Modify `num_inference_steps`, `guidance_scale`, and `strength` parameters in the `main.py` or `image_generator.py` to fine-tune the image generation process.
 
 ## Example
 
 ```sh
-python generate_avatar.py --style roman
+python main.py --style roman

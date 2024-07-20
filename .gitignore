@@ -1,6 +1,8 @@
 # Model files
 GFPGANv1.3.pth
 gfpgan/
+input/
+output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
