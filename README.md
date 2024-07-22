@@ -1,13 +1,15 @@
 # AI Image Generation Program
 
-This repository contains an AI-based image generation program designed for a technical test. The program uses the Stable Diffusion model to generate images in various styles and enhances faces using the GFPGAN model.
+This repository contains an AI-based image generation program designed for a technical test. The program uses the Stable Diffusion model to generate images in various styles and enhances face quality using the GFPGAN model.
 
 ## Features
 
 - **Style Transfer**: Generates images in specified styles (e.g., Roman, superhero, fantasy, LinkedIn, wizard).
 - **Face Enhancement**: Enhances the quality of faces in the generated images using GFPGAN.
+- **Gender Detection**: Detects the gender of faces in the input image and adjusts the generation prompts accordingly.
 - **Configurable Parameters**: Allows customization of inference steps, guidance scale, and strength for image generation.
 - **Random Seed Generation**: Generates images with random seeds for variability.
+- **Optimal GPU Memory Usage**: Configures PyTorch to use all available memory on the GPU.
 
 ## Requirements
 
@@ -59,7 +61,7 @@ This repository contains an AI-based image generation program designed for a tec
 ## Customization
 
 - **Add New Styles**: Update the `prompts.json` file to add new styles with corresponding positive and negative prompts.
-- **Adjust Parameters**: Modify `num_inference_steps`, `guidance_scale`, and `strength` parameters in the `main.py` or `image_generator.py` to fine-tune the image generation process.
+- **Adjust Parameters**: Modify `num_inference_steps`, `guidance_scale`, and `strength` parameters in `main.py` or `image_generator.py` to fine-tune the image generation process.
 
 ## Example
 
