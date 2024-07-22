@@ -1,5 +1,9 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
 import argparse
 import random
+import torch
 from image_generator import ImageGenerator
 
 def main():
@@ -7,6 +11,10 @@ def main():
     parser.add_argument('--style', type=str, required=True, help='The style of the generated image (e.g., roman, superhero, fantasy, linkedin, wizard)')
     parser.add_argument('--seed', type=int, default=None, help='Random seed for image generation')
     args = parser.parse_args()
+
+    # Configurar PyTorch para usar toda la memoria disponible
+    torch.cuda.empty_cache()  # Vaciar caché de GPU
+    torch.cuda.set_per_process_memory_fraction(1.0)  # Intentar usar el 100% de la memoria GPU
 
     model_url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth'
     model_path = 'GFPGANv1.3.pth'
