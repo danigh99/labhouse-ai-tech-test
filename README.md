@@ -49,9 +49,10 @@ This repository contains an AI-based image generation program designed for a tec
 
     ```sh
     python main.py --style roman
-    python main.py --style fantasy
+    python main.py --style superhero
     python main.py --style linkedin
     python main.py --style wizard
+    python main.py --style fantasy
     ```
 
 3. **Generated images:**
