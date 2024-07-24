@@ -30,7 +30,7 @@ def main():
 
     for steps in [50, 100, 150, 200]:
         for scale in [7, 7.5, 8]:
-            for strength in [0.75]:
+            for strength in [0.3]:
                 for i in range(10):
                     seed = random.randint(1, 10**5) if args.seed is None else args.seed + i
                     image_generator.generate_image(input_image_path, output_folder, args.style, num_inference_steps=steps, guidance_scale=scale, strength=strength, seed=seed)
