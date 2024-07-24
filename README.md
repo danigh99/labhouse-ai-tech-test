@@ -41,6 +41,10 @@ This repository contains an AI-based image generation program designed for a tec
     pip install -r requirements.txt
     ```
 
+4. **Download the custom model:**
+
+    Download the `dreamshaper_8.safetensors` model from [Civitai](https://civitai.com/models/4384/dreamshaper) and place it in the `models` folder on the root project path.
+
 ## Usage
 
 1. **Prepare your input image:**
