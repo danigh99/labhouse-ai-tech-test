@@ -18,12 +18,12 @@ def main():
 
     model_url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth'
     model_path = 'GFPGANv1.3.pth'
-    pipeline_name = "CompVis/stable-diffusion-v1-4"
+    custom_model_path = 'models/dreamshaper_8.safetensors'
     prompts_path = 'prompts.json'
     input_image_path = "input/6.jpg"
     output_folder = "output"
 
-    image_generator = ImageGenerator(model_url, model_path, pipeline_name, prompts_path)
+    image_generator = ImageGenerator(model_url, model_path, custom_model_path, prompts_path)
     image_generator.download_model()
     image_generator.load_pipeline()
     image_generator.load_gfpgan()

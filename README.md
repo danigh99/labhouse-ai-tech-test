@@ -1,6 +1,6 @@
 # AI Image Generation Program
 
-This repository contains an AI-based image generation program designed for a technical test. The program uses the Stable Diffusion model to generate images in various styles and enhances face quality using the GFPGAN model.
+This repository contains an AI-based image generation program designed for a technical test. The program uses the Stable Diffusion model to generate images in various styles and enhances face quality using the GFPGAN model. Additionally, it supports the integration of custom models like `dreamshaper_8.safetensors`.
 
 ## Features
 
@@ -10,6 +10,8 @@ This repository contains an AI-based image generation program designed for a tec
 - **Configurable Parameters**: Allows customization of inference steps, guidance scale, and strength for image generation.
 - **Random Seed Generation**: Generates images with random seeds for variability.
 - **Optimal GPU Memory Usage**: Configures PyTorch to use all available memory on the GPU.
+- **Custom Model Integration**: Supports custom models like `dreamshaper_8.safetensors`.
+- **Diffusers Library**: Utilizes the Diffusers library for efficient and scalable image generation.
 
 ## Requirements
 
@@ -39,6 +41,10 @@ This repository contains an AI-based image generation program designed for a tec
     pip install -r requirements.txt
     ```
 
+4. **Download the custom model:**
+
+    Download the `dreamshaper_8.safetensors` model from [Civitai](https://civitai.com/models/4384/dreamshaper) and place it in the `models` folder on the root project path.
+
 ## Usage
 
 1. **Prepare your input image:**
@@ -63,6 +69,14 @@ This repository contains an AI-based image generation program designed for a tec
 
 - **Add New Styles**: Update the `prompts.json` file to add new styles with corresponding positive and negative prompts.
 - **Adjust Parameters**: Modify `num_inference_steps`, `guidance_scale`, and `strength` parameters in `main.py` or `image_generator.py` to fine-tune the image generation process.
+
+## Diffusers Library
+
+The program leverages the Diffusers library from Hugging Face for efficient and scalable image generation. The Diffusers library provides:
+
+- **Ease of Use**: Simplifies the process of integrating different models and schedulers.
+- **Flexibility**: Allows easy customization and experimentation with different model parameters.
+- **Performance**: Optimized for high performance on both GPUs and CPUs, making the image generation process faster and more efficient.
 
 ## Example
 

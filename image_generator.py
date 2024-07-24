@@ -3,17 +3,17 @@ import json
 import requests
 import torch
 from PIL import Image
-from diffusers import StableDiffusionImg2ImgPipeline, LMSDiscreteScheduler
+from diffusers import StableDiffusionImg2ImgPipeline, DPMSolverMultistepScheduler
 from gfpgan import GFPGANer
 import numpy as np
 import insightface
 from insightface.app import FaceAnalysis
 
 class ImageGenerator:
-    def __init__(self, model_url, model_path, pipeline_name, prompts_path, device='cuda'):
+    def __init__(self, model_url, model_path, custom_model_path, prompts_path, device='cuda'):
         self.model_url = model_url
         self.model_path = model_path
-        self.pipeline_name = pipeline_name
+        self.custom_model_path = custom_model_path
         self.prompts_path = prompts_path
         self.device = device
         self.pipe = None
@@ -38,13 +38,13 @@ class ImageGenerator:
             print(f'\nModel downloaded to {self.model_path}')
     
     def load_pipeline(self):
-        scheduler = LMSDiscreteScheduler(
+        scheduler = DPMSolverMultistepScheduler(
             beta_start=0.00085, 
             beta_end=0.012, 
             beta_schedule="scaled_linear", 
             steps_offset=1
         )
-        self.pipe = StableDiffusionImg2ImgPipeline.from_pretrained(self.pipeline_name, scheduler=scheduler)
+        self.pipe = StableDiffusionImg2ImgPipeline.from_single_file(self.custom_model_path, scheduler=scheduler)
         self.pipe.to(self.device)
     
     def load_gfpgan(self):
