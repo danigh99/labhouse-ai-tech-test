@@ -3,7 +3,7 @@ import json
 import requests
 import torch
 from PIL import Image
-from diffusers import StableDiffusionImg2ImgPipeline, LMSDiscreteScheduler
+from diffusers import StableDiffusionImg2ImgPipeline, DPMSolverMultistepScheduler
 from gfpgan import GFPGANer
 import numpy as np
 import insightface
@@ -38,7 +38,7 @@ class ImageGenerator:
             print(f'\nModel downloaded to {self.model_path}')
     
     def load_pipeline(self):
-        scheduler = LMSDiscreteScheduler(
+        scheduler = DPMSolverMultistepScheduler(
             beta_start=0.00085, 
             beta_end=0.012, 
             beta_schedule="scaled_linear", 
